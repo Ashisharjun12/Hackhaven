@@ -63,12 +63,9 @@ Snackbar.show(({
     <KeyboardAvoidingView
     behavior={Platform.OS==='android'? 'padding':'height'}
     >
-        <ScrollView>
-      <ImageBackground
-      source={require('../asserts/pic6.png')}
-      resizeMode='cover'
-      style={{flex:1,height:612}}
-      >
+        <ScrollView  style={{ backgroundColor:'#B7C9F2',
+    height:'100%'}}>
+        
         
     <View style={styles.container}>
        
@@ -90,10 +87,11 @@ Snackbar.show(({
       />
     
       <TouchableOpacity onPress={handleSubmit} style={styles.submit}><Text >Login</Text></TouchableOpacity>
+      <Text onPress={()=>navigation.goBack()} style={{alignSelf:'center',marginTop:17,marginRight:2,color:'black'}}>Create Account ?</Text>
       </View>
 
     </View>
-    </ImageBackground>
+   
     </ScrollView>
     </KeyboardAvoidingView>
   )
@@ -106,13 +104,14 @@ const styles = StyleSheet.create({
     justifyContent:'center',
     alignItems:'center',
     borderRadius:6,
+    color:'black',
     fontWeight:'bold',
     fontSize:14,
     borderWidth:0.6,
     height:42,
-    width:80,
-    marginLeft:100,
-    marginTop:10
+    width: '90%',
+    marginTop:10,
+    marginLeft:12
     
  },
  
@@ -125,28 +124,30 @@ const styles = StyleSheet.create({
   },
   
   card: {
-    marginTop:112,
+    marginTop:'65%',
     paddingLeft:18,
     paddingRight:18,
     paddingBottom:18,
     paddingTop:2,
-    height: 280,
+    height: "60%",
     width: '100%',
-    backgroundColor: 'rgba(225, 225, 225, 0.6)', 
-    borderRadius: 20, 
+    backgroundColor: 'rgba(227, 226, 240, 0.6)',
+    borderRadius: 6, 
   },
   input: {
     paddingLeft: 18,
-    fontSize: 16,
+    fontSize: 13,
     fontWeight:'bold',
-    borderRadius: 8,
+    borderRadius: 6,
     marginBottom: 16,
-    backgroundColor: 'white', // Set background color for TextInput
+    backgroundColor: 'white', 
     opacity:0.7
   },
   title: {
+    marginTop:3,
     fontWeight: 'bold',
-    fontSize: 24,
+    fontSize: 23,
+    color:'black'
   }
 
 })

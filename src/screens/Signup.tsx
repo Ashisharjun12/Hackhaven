@@ -63,11 +63,12 @@ const Signup = ({ navigation }) => {
 
   return (
     <KeyboardAvoidingView behavior={Platform.OS === 'android' ? 'padding' : 'height'}>
-      <ScrollView>
-        <ImageBackground source={require('../asserts/logins.png')} resizeMode='cover' style={{ flex: 1, height: 612 }}>
+      <ScrollView style={{ backgroundColor:'#B7C9F2',
+    height:'100%'}}>
+
           <View style={styles.container}>
             <View style={styles.card}>
-              <Text style={[styles.title, { marginLeft: 100, marginBottom: 16 }]}>Sign-up</Text>
+              <Text style={[styles.title, {alignSelf:'center', marginBottom: 16 }]}>Get a Account !</Text>
               <TextInput
                 style={styles.input}
                 value={name}
@@ -107,10 +108,14 @@ const Signup = ({ navigation }) => {
                 placeholder='Re-enter Password'
                 placeholderTextColor='rgba(0,0,0,0.7)'
               />
-              <TouchableOpacity onPress={handleSubmit} style={styles.submit}><Text>Submit</Text></TouchableOpacity>
+              <TouchableOpacity onPress={handleSubmit} style={styles.submit}><Text>Sign Up</Text></TouchableOpacity>
+
+              <Text onPress={()=>navigation.navigate('Login')} style={{marginTop:14,alignSelf:'center',color:'black'}}> Login To Account ?</Text>
+             
             </View>
+            
           </View>
-        </ImageBackground>
+      
       </ScrollView>
     </KeyboardAvoidingView>
   );
@@ -122,42 +127,43 @@ const styles = StyleSheet.create({
   submit: {
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 12,
+    borderRadius: 3,
     borderWidth: 0.6,
-    //  backgroundColor:'rgba(225, 225, 225, 0.6)',
     height: 42,
-    width: 80,
-    marginLeft: 100,
+    width: '90%',
+    marginLeft:15,
     marginTop: 10
   },
   container: {
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 20,
+    padding: 20
   },
   card: {
-    marginTop: 112,
+    marginTop: "55%",
     paddingLeft: 18,
     paddingRight: 18,
-    paddingBottom: 18,
-    paddingTop: 2,
-    height: 370,
+    height: "70%",
     width: '100%',
-    backgroundColor: 'rgba(225, 225, 225, 0.6)',
-    borderRadius: 20,
+    backgroundColor: 'rgba(227, 226, 240, 0.6)',
+    borderRadius: 6,
   },
   input: {
     paddingLeft: 18,
-    fontSize: 16,
+    fontSize: 13,
     fontWeight: 'bold',
-    borderRadius: 20,
+    borderRadius: 6,
     marginBottom: 12,
-    backgroundColor: 'white', // Set background color for TextInput
+    backgroundColor: 'white', 
     opacity: 0.7
   },
   title: {
+    marginTop:3,
     fontWeight: 'bold',
-    fontSize: 24,
+    fontSize: 20,
+    color:'black'
   }
 });
+
+
