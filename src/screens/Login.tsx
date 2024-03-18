@@ -73,7 +73,7 @@ Snackbar.show(({
     <View style={styles.container}>
        
       <View style={styles.card}>
-      <Text style={[styles.title,{marginLeft:100,marginBottom:16,}]}>Login</Text>
+      <Text style={[styles.title,{marginLeft:100,marginBottom:16,fontWeight:'bold',fontSize:26}]}>Login</Text>
       <TextInput
       style={styles.input}
       placeholder='Enter your Email'
@@ -89,7 +89,7 @@ Snackbar.show(({
       placeholderTextColor='rgba(0,0,0,0.7)'
       />
     
-      <TouchableOpacity onPress={handleSubmit} style={styles.submit}><Text >Submit</Text></TouchableOpacity>
+      <TouchableOpacity onPress={handleSubmit} style={styles.submit}><Text >Login</Text></TouchableOpacity>
       </View>
 
     </View>
@@ -105,7 +105,9 @@ const styles = StyleSheet.create({
   submit:{
     justifyContent:'center',
     alignItems:'center',
-    borderRadius:12,
+    borderRadius:6,
+    fontWeight:'bold',
+    fontSize:14,
     borderWidth:0.6,
     height:42,
     width:80,
@@ -137,7 +139,7 @@ const styles = StyleSheet.create({
     paddingLeft: 18,
     fontSize: 16,
     fontWeight:'bold',
-    borderRadius: 20,
+    borderRadius: 8,
     marginBottom: 16,
     backgroundColor: 'white', // Set background color for TextInput
     opacity:0.7
