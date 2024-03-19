@@ -11,4 +11,3 @@ const Personalinfo = () => {
 
 export default Personalinfo
 
-const styles = StyleSheet.create({})

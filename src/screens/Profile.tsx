@@ -4,9 +4,7 @@ import DocumentPiker from 'react-native-document-picker'
 import { useContext } from 'react'
 import DatabaseContext from '../appwrite/DatabaseContext'
 import AppwriteContext from '../appwrite/AppwriteContext'
-import BottomSheet from '../component/BottomSheet/BottomSheet'
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-import Personalinfo from '../component/BottomSheetScreens/Personalinfo'
 import { useNavigation } from '@react-navigation/native'
 import { Databases } from 'appwrite'
 
@@ -73,29 +71,32 @@ const selectDoc = async () => {
   return (
        <GestureHandlerRootView>
       <ScrollView>
+
+  
+
         <View style={styles.container}>
          
         <View style={styles.profilediv}>
           
         <TouchableOpacity style={styles.picdiv} onPress={selectDoc} >
                <ImageBackground 
-                  source={picdoc ? {uri:picdoc}:require('../asserts/angel.png')}
+                  source={picdoc ? {uri:picdoc}:require('../asserts/boy.png')}
                   resizeMode='cover'
                   style={{ width: '100%', height: '100%',}}>
                 </ImageBackground>
         </TouchableOpacity>
         <TouchableOpacity onPress={handleEditName} 
-        style={styles.editbut}><Image source={updatpermis ? require('../asserts/checkmark.png'):require('../asserts/draw.png')} resizeMode='contain' style={{height:26,width:'100%'}}>
+        style={styles.editbut}><Image source={updatpermis ? require('../asserts/checked.png'):require('../asserts/edit.png')} resizeMode='contain' style={{height:26,width:'100%'}}>
         </Image></TouchableOpacity>
         
         <View style={styles.namediv}>
-        <TextInput value={updatedName} onChangeText={text=>setUpdatedName(text)} placeholder={currentuserinfo.name} readOnly={!updatpermis} style={ [ {borderRadius:12,borderWidth: updatpermis ? 1 : 0},{height:42,fontSize:20,fontWeight:'bold',color:'black' }]} placeholderTextColor="black">
+        <TextInput value={updatedName} onChangeText={text=>setUpdatedName(text)} placeholder={currentuserinfo.name} readOnly={!updatpermis} style={ [ {borderRadius:5,borderWidth: updatpermis ? 1 : 0},{height:36,fontSize:16,color:'black',marginBottom:'5%' }]} placeholderTextColor="black">
         </TextInput></View>
         
-        <View style={{marginLeft:45}}><Text style={{fontSize:14,fontWeight:'bold'}}>0 Project</Text></View>
+        <View style={{marginLeft:18}}><Text style={{fontSize:16,fontWeight:'500',color:'black'}}>0 Project</Text></View>
         </View>
-        <View style={{marginTop:14}}>
-         <Text style={{fontSize:16}}> Hey Here You Can Update Your all details</Text>
+        <View style={{marginTop:18,marginLeft:'2%'}}>
+         <Text style={{fontSize:18,color:'black',fontWeight:'500'}}> Add Details</Text>
          </View>
 
          <View style={{marginTop:10,height:160,width:'100%'}}>
@@ -105,7 +106,7 @@ const selectDoc = async () => {
               <Image source={require('../asserts/information.png')} resizeMode='contain' style={{height:'100%',width:'100%'}}></Image>
             </View>
             <View style={{height:55,width:'100%',marginTop:12,}}><Text style={{fontSize:17,color:'black',fontWeight:'bold'}}>Personal Information</Text></View>
-            <View style={{marginTop:5}}><Text>Completed-></Text></View>
+            <View style={{marginTop:5}}><Text>Completed</Text></View>
           </View>
         
           <View style={{marginTop:18,padding:12,marginLeft:14,height:120,borderRadius:11,width:116,backgroundColor:"rgba(220,224,238,1)"}}>
@@ -113,7 +114,7 @@ const selectDoc = async () => {
               <Image source={require('../asserts/box.png')} resizeMode='contain' style={{height:'100%',width:'100%'}}></Image>
             </View>
             <View style={{height:55,width:'100%',marginTop:12,}}><Text style={{fontSize:17,color:'black',fontWeight:'bold'}}>Projects & Work</Text></View>
-            <View style={{marginTop:5}}><Text>Completed-></Text></View>
+            <View style={{marginTop:5}}><Text>Completed </Text></View>
           </View>
           
           <View style={{marginTop:18,padding:12,marginLeft:14,height:120,borderRadius:11,width:116,backgroundColor:"rgba(220,224,238,1)"}}>
@@ -121,7 +122,7 @@ const selectDoc = async () => {
               <Image source={require('../asserts/graduation.png')} resizeMode='contain' style={{height:'100%',width:'100%'}}></Image>
             </View>
             <View style={{height:55,width:'100%',marginTop:12,}}><Text style={{fontSize:17,color:'black',fontWeight:'bold'}}>Education Details</Text></View>
-            <View style={{marginTop:5}}><Text>Completed-></Text></View>
+            <View style={{marginTop:5}}><Text>Completed</Text></View>
           </View>
           <View style={{marginTop:18,padding:12,marginLeft:14,height:120,borderRadius:11,width:116,backgroundColor:"rgba(220,224,238,1)"}}>
             <View style={{padding:6,height:26,width:26,borderRadius:10,backgroundColor:"#0F4DA0", position:'absolute', bottom:104,left:10}}>
@@ -140,11 +141,7 @@ const selectDoc = async () => {
           </View>
         </View>
       </ScrollView>
-      <BottomSheet ref={ref}>
-          <View style={{ flex: 1, backgroundColor: '#F4F4F4' }}>
-          <Personalinfo/>
-          </View>
-        </BottomSheet>
+  
       </GestureHandlerRootView>
   )
 }
@@ -153,41 +150,45 @@ export default Profile
 
 const styles = StyleSheet.create({
   container:{
+    marginTop:'4%',
     flex:1,
     padding:14,
 
   },
   
   profilediv:{
-    height:134,
+    height:"20%",
     width:'100%',
     marginTop:34,
-    borderRadius:20,
+    borderRadius:15,
     backgroundColor:'rgba(220,224,238,0.51)',
     
   },
   picdiv:{
-    height:67,width:67,borderRadius:45,
-    backgroundColor:'rgba(220,224,238,0.51)',
+    height:67,
+    width:67,
+    borderRadius:99,
+    backgroundColor:'rgba(90, 121, 235, 0.728)',
     position:'absolute',
     borderWidth:1,
     borderColor:'rgba(220,224,238,1)',
     elevation:5,
-    shadowColor:'blue',
-    bottom:84,
+    shadowColor:'purple',
+    bottom:86,
     left:25,
     overflow:'hidden'
     
   },
   editbut:{
-    height:40,
+    height:20,
     width:48,
     position:'absolute',
     left:282,
-    top:18
+    top:12
   },
   namediv:{
-    height:38,width:280,
+    height:40,
+    width:'80%',
     marginTop:55,
     paddingLeft:16,
     overflow:'hidden'
