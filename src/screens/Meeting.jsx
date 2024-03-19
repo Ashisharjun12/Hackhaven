@@ -49,6 +49,7 @@ const styles= StyleSheet.create({
 
   },
   submit:{
+   
     justifyContent:'center',
     alignItems:'center',
     borderRadius:6,
