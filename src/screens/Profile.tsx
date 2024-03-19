@@ -18,7 +18,7 @@ const Profile = () => {
    const[showBottomTab,setShowBottomTab]=useState(true);
    const[imagefile,setImagefile]=useState({})
    
-    navigation=useNavigation();
+   const navigation=useNavigation();
    useEffect(() => {
     navigation.setOptions({
       tabBarStyle: { display: showBottomTab ? 'flex' : 'none' }
