@@ -1,4 +1,4 @@
-import { TouchableOpacity, ImageBackground, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, View, ScrollView } from 'react-native'
+import { TouchableOpacity, ImageBackground, KeyboardAvoidingView, Platform, StyleSheet, Text, TextInput, View, ScrollView, Image } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import Icon from 'react-native-vector-icons/AntDesign';
 import DatabaseContext from '../../appwrite/DatabaseContext';
@@ -116,59 +116,67 @@ const CreateProject = () => {
 
 
   return (
-    <KeyboardAvoidingView
+    <KeyboardAvoidingView  
       behavior={Platform.OS === 'android' ? 'padding' : 'height'}>
-      <ScrollView>
+      <ScrollView   style={{backgroundColor:'rgba(220,224,238,0.5)'}}>
         <View style={styles.container}>
-          <View style={styles.dp}>
-            <Text style={{ fontSize: 13, marginLeft: 12 }}>Project name / Project Title</Text>
+          <View >
+            <Text style={{ fontSize: 18,marginBottom:'2%', justifyContent:'flex-start',color:'black',marginLeft:'3%' }}>Project name / Project Title</Text>
             <TextInput style={styles.input}
-              placeholder='Ex-folian'
+              placeholder='Project Name'
               value={title}
               onChangeText={text => setTitle(text)}
             />
-            <Text style={{ fontSize: 13, marginLeft: 12 }}>Technology Used</Text>
+            <Text style={{ fontSize: 18,marginBottom:'2%', justifyContent:'flex-start',color:'black',marginLeft:'3%' }}>Technology Used</Text>
             <TextInput style={styles.input}
-              placeholder='Ex-React,Next'
+              placeholder='Ex - React , Next , MongoDb '
               value={TechnologyUsed}
               onChangeText={text => setTechnologyUsed(text)}
             />
-            <Text style={{ fontSize: 13, marginLeft: 12 }}>Requirements </Text>
+            <Text style={{ fontSize: 18,marginBottom:'2%', justifyContent:'flex-start',color:'black',marginLeft:'3%' }}>Requirements </Text>
             <TextInput style={styles.input}
-              placeholder='Ex-React Developer'
+              placeholder='Ex - React Developer'
               value={Requirement}
               onChangeText={text => setRequirement(text)}
             />
           </View>
           {/*second part*/}
 
-          <View style={[styles.dp, { height: 200 }]}>
-            <Text >Add a logo and github repo</Text>
-            <View style={{ flexDirection: 'row', marginTop: 12, marginLeft: 6 }}>
-              <View style={styles.dppicdiv}>
-                <ImageBackground
-                  source={picdoc ? {uri:picdoc}:require('../../asserts/Empty.png')}
-                  resizeMode='cover'
-                  style={{ width: '100%', height: '100%', borderRadius: 3, }}>
-                </ImageBackground>
+          <View style={{marginTop:"-23%"}}>
+            <Text style={{fontSize:17 ,color:'black',fontWeight:'500',marginLeft:'3%',marginBottom:'5%'}}>Upload Image</Text>
+            <View style={{ flexDirection: 'row'}}>
+             
+             <View style={{flexDirection:'row',alignItems:'center',justifyContent:'center',marginBottom:'7%',marginLeft:'5%'}}>
+
+             
+                <View style={{width:75,height:65}}>
+                  <Image  source={picdoc ? {uri:picdoc}:require('../../asserts/imp.png')}
+                  style={{ width: '100%', height: '100%', marginLeft:'5%'}}
+                  />
+                
+                </View>
+
+              <View style={{ flexDirection: 'row', justifyContent: 'space-evenly', alignItems: 'center', height:45, width: "44%", marginLeft: "25%", marginTop: 6, borderWidth: 0.6, borderRadius: 4, borderColor: '#0d0c0c' }}>
+                <Image source={require('../../asserts/upload.png')} style={{width:"30%",height:'74%' }} />
+                <TouchableOpacity onPress={selectDoc} ><Text style={{ fontWeight: '500',color:'black' }}>Upload </Text>
+                </TouchableOpacity>
               </View>
-              <View style={{ flexDirection: 'row', justifyContent: 'center', alignItems: 'center', height: 35, width: 125, marginLeft: 48, marginTop: 36, borderWidth: 0.4, borderRadius: 8, borderColor: '#9B9090' }}>
-                <Icon name="upload" size={15} color="#900" style={{ fontSize: 14, fontWeight: 'bold', marginRight: 4 }} />
-                <TouchableOpacity onPress={selectDoc} ><Text style={{ fontWeight: 'bold' }}>Upload logo</Text></TouchableOpacity>
+
               </View>
+              
             </View>
-            <Text style={{ marginTop: 18, fontSize: 14, marginLeft: 10 }}>Your github repo</Text>
+            <Text style={{ fontSize:18,fontWeight:'500',color:'black',marginLeft:'3%',marginBottom:'5%'}}>Github  Link</Text>
             <TextInput
               style={[styles.input, { height: 44, fontSize: 16 }]}
-              placeholder='Github Repositories '
+              placeholder='Github Repository Link '
               value={github}
               onChangeText={text => setGithub(text)}
             />
           </View>
-
+      <Text style={{fontSize:17,fontWeight:'500',color:'black',marginLeft:'4%',marginTop:'2%',marginBottom:'2%'}}>Description</Text>
           <TextInput
             multiline
-            style={[styles.input, { textAlignVertical: 'top', height: 160, fontSize: 20, padding: 0, marginTop: 11, width: 340, marginLeft: 10, backgroundColor: 'rgba(8,118,144,0.11)' }]}
+            style={[styles.input, { textAlignVertical: 'top', height: 100, fontSize: 18,  marginTop: 2, width: '95%',marginBottom:10 }]}
             placeholder='Write a brief about your Project'
             value={content}
             onChangeText={text => setContent(text)}
@@ -176,10 +184,26 @@ const CreateProject = () => {
           />
 
 
-          <TouchableOpacity onPress={handlesubmit} style={{ height: 44, width: 120, backgroundColor: 'red', marginLeft: 44,marginTop:44 }}><Text>DONE</Text></TouchableOpacity>
+          <TouchableOpacity style={{ height: 12, width: 120, backgroundColor: 'red', marginLeft: 44,marginTop:80 }}><Text>Nothing</Text></TouchableOpacity>
+       
         </View>
 
+
+
       </ScrollView>
+
+      <TouchableOpacity onPress={handlesubmit} style={{   justifyContent:'center',
+    alignItems:'center',
+    borderRadius:6,
+    borderWidth:0.6,
+    height:42,
+    width: '90%',
+    marginTop:10,
+    marginLeft:12,
+    }}>
+        <Text style={{marginLeft:'3%',fontSize:15,fontWeight:'500',color:'black'}}>Done</Text>
+        </TouchableOpacity>
+
     </KeyboardAvoidingView>
   )
 
@@ -191,29 +215,20 @@ export default CreateProject
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'white'
+    marginLeft:'3%',
+    marginTop:'5%'
+  
   },
-  dp: {
-    marginTop: 10,
-    paddingLeft: 12,
-    paddingRight: 18,
-    paddingBottom: 18,
-    paddingTop: 2,
-    height: 180,
-    width: '100%',
-    backgroundColor: 'rgba(8,118,144,0.11)',
-    borderRadius: 20,
-  },
+
   input: {
-    paddingLeft: 13,
-    fontSize: 14,
-    height: 38,
-    width: 320,
-    fontWeight: 'bold',
+    paddingLeft: 15,
+    fontSize: 15,
+    height: "12%",
+    width: "96%",
     borderColor: 'black',
-    borderWidth: 0.5,
-    borderRadius: 12,
-    marginBottom: 2,
+    borderWidth: 0.6,
+    borderRadius: 8,
+    marginBottom: "3%",
     backgroundColor: 'white',
 
   },

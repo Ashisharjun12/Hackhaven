@@ -9,16 +9,19 @@ const Project = () => {
   return (
     <Top.Navigator initialRouteName='Allproject'
     screenOptions={{
-      tabBarLabelStyle: { fontSize:14,color:'#083945'},
-      tabBarContentContainerStyle:{height:35,backgroundColor: 'rgba(220,224,238,0.5)'},
+     
+      tabBarLabelStyle: { fontSize:14,color:'black'},
+      tabBarContentContainerStyle:{height:50},
+    
     }}
     >
       <Top.Screen
-      name='ALLProject'
+      
+      name='All Project'
       component={Allproject}
       />
       <Top.Screen
-      name='CreateProject'
+      name='Create  Project'
       component={CreateProject}
       />
       
@@ -29,4 +32,3 @@ const Project = () => {
 
 export default Project
 
-const styles = StyleSheet.create({})

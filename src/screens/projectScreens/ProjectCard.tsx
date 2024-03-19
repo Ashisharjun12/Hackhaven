@@ -1,4 +1,4 @@
-import { KeyboardAvoidingView, ScrollView,StatusBar, StyleSheet, Text, View } from 'react-native'
+import {  ScrollView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
 
 const ProjectCard = ({title,technology,requirement}) => {
@@ -12,24 +12,24 @@ const ProjectCard = ({title,technology,requirement}) => {
        <View style={styles.Headerdiv}>
          <Text numberOfLines={2} ellipsizeMode="tail" style={styles.headerText}>{title}</Text>
            </View>
-            <Text style={{marginTop:11,fontSize:16}}>Technology Used</Text>
-           <View style={[styles.within,{marginTop:1}]}>
+            <Text style={{fontSize:16,color:'black',marginLeft:'5%' ,marginBottom:'2%',marginTop:'2%'}}>Technology Used</Text>
+           <View style={[styles.within,{marginTop:2}]}>
            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
            {Technologyparts.map((part, index) => (
                <View key={index} style={styles.textContainer}>
-          <Text style={{}}>{part}</Text>
+          <Text style={{color:'black'}} >{part}</Text>
            </View>
             ))}
         
             </ScrollView>
         </View>
-        {/**/}
-        <Text style={{fontSize:16}}>Requirement</Text>
-           <View style={[styles.within,{marginTop:1}]}>
+       
+        <Text style={{fontSize:16,color:'black',marginLeft:'5%',marginBottom:'2%',marginTop:'2%'}}>Requirement</Text>
+           <View style={[styles.within,{marginBottom:6}]}>
            <ScrollView horizontal showsHorizontalScrollIndicator={false}>
            {Requirementparts.map((part, index) => (
                <View key={index} style={styles.textContainer}>
-          <Text style={{}}>{part}</Text>
+          <Text style={{color:'black'}} >{part}</Text>
            </View>
             ))}
         
@@ -52,9 +52,9 @@ const styles = StyleSheet.create({
     },
     Card:{
         elevation:5,
-        shadowColor:'blue',
-        height:214,
-        borderRadius:22,
+        shadowColor:'black',
+        height:'100%',
+        borderRadius:17,
         borderWidth:1,
         borderColor:'white',
         padding:10,
@@ -62,18 +62,20 @@ const styles = StyleSheet.create({
         backgroundColor:'white'
     },
     Headerdiv:{
-        height:55,width:'100%',
+        height:"17%",
+        width:'100%',
         alignItems: 'flex-start',
         justifyContent: 'center',
         
     }, 
     within:{
-        height:40,width:'100%',
+        height:"20%",
+        width:'100%',
         alignItems:'flex-start',
         flexDirection: 'row',
         flexWrap: 'wrap', 
         overflow: 'hidden', 
-        // backgroundColor:'red'
+        
     },
     textContainer:{
         marginHorizontal: 5,
@@ -85,13 +87,13 @@ const styles = StyleSheet.create({
         backgroundColor: 'rgba(220,224,238,1)',    
     },
     headerText:{
-        flex:1,
+        
         justifyContent:'space-between',
-        lineHeight:26,
-      fontSize:20,
-      color:'black',
-      fontWeight:'bold',
-      alignItems:'flex-start'
+        marginLeft:"4%",
+       fontSize:17,
+       color:'black',
+        fontWeight:'500',
+       alignItems:'flex-start'
       
     }
 

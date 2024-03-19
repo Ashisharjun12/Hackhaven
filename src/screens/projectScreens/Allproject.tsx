@@ -20,8 +20,9 @@ const Allproject = () => {
     fetchdata();
   }, [data]);
 
-  const renderProjectCard = ({ item }) => (
+  const renderProjectCard = ({ item ,index}) => (
     <ProjectCard
+    key={index}
       title={item.title}
       technology={item.TechnologyUsed}
       requirement={item.Requirement}

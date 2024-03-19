@@ -3,12 +3,14 @@ import React from 'react'
 import { useRoute } from '@react-navigation/native'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs'
 import Project from '../../screens/Project'
-import Mywork from '../../screens/Mywork'
-import ChatBot from '../../screens/ChatBot'
 import Profile from '../../screens/Profile'
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import Entypo from 'react-native-vector-icons/Entypo'
+import AntDesign from 'react-native-vector-icons/AntDesign'
+import Ionicons from 'react-native-vector-icons/Ionicons'
 import { useContext } from 'react'
 import DatabaseContext from '../../appwrite/DatabaseContext'
+import Meeting from '../../screens/Meeting'
+import Chat from '../../screens/Chat'
 const BotTab=createBottomTabNavigator()
 
 const BottomTab = () => {
@@ -19,6 +21,8 @@ const BottomTab = () => {
     <BotTab.Navigator initialRouteName='Profile'
     screenOptions={{
       headerShown: false, 
+      tabBarActiveTintColor:'#9195F6',
+      tabBarInactiveTintColor:'grey'
       
       
     }}
@@ -26,26 +30,27 @@ const BottomTab = () => {
         <BotTab.Screen
         name='Project'
         component={Project}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-          <Image source={require('../../asserts/box.png')} resizeMode='contain'style={{ height: 24,width:'100%',tintColor: route.name =='Project' ? 'blue' : color}}></Image>),
-        }}
+        options={{headerShown:false , tabBarIcon:({color,size})=>(
+          <AntDesign name="appstore1" color={color} size={size} />
+        ) }}
       
         />
         <BotTab.Screen
-        name='Mywork'
-        component={Mywork}
-        options={{
-          tabBarIcon: ({ color, size }) => (
-          <Icon name="work-outline" size={30}  color={route.name === 'Mywork' ? 'red' : color} />),       
-        }}
+        name='Meeting'
+        component={Meeting}
+        options={{headerShown:false , tabBarIcon:({color,size})=>(
+          <Ionicons name="people" color={color} size={size} />
+        )}
+        }
         />
         <BotTab.Screen
-        name='ChatBot'
-        component={ChatBot}
-        options={{
-            
-        }}
+        name='Chat'
+        component={Chat}
+        options={{headerShown:false , tabBarStyle:{display:'none'}, tabBarIcon:({color,size})=>(
+          <Entypo name="chat" color={color} size={size} />
+        )}
+        
+        }
         />
         <BotTab.Screen
         name='Profile'
@@ -53,10 +58,12 @@ const BottomTab = () => {
         options={{
           tabBarIcon: () => (
             <View style={{width:35,borderRadius:17}}>
-            <Image source={picdoc ? {uri:picdoc}:require('../../asserts/angel.png')}resizeMode='cover' style={{height:'100%',width:'100%',borderRadius:50}}></Image>
+            <Image source={picdoc ? {uri:picdoc}:require('../../asserts/boy.png')}resizeMode='cover' style={{height:'100%',width:'100%',borderRadius:50}}></Image>
             </View>),
         }}
         />
+
+        
     </BotTab.Navigator>
   )
 }
