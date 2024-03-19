@@ -1,4 +1,4 @@
-import {  ScrollView, StyleSheet, Text, View } from 'react-native'
+import {  ScrollView, StyleSheet, Text, View ,Image} from 'react-native'
 import React from 'react'
 
 const ProjectCard = ({title,technology,requirement}) => {
@@ -10,7 +10,7 @@ const ProjectCard = ({title,technology,requirement}) => {
   <View style={styles.container}>
      <View style={styles.Card}>
        <View style={styles.Headerdiv}>
-         <Text numberOfLines={2} ellipsizeMode="tail" style={styles.headerText}>{title}</Text>
+         <Text numberOfLines={1} ellipsizeMode="tail" style={styles.headerText}>{title}</Text>
            </View>
             <Text style={{fontSize:16,color:'black',marginLeft:'5%' ,marginBottom:'2%',marginTop:'2%'}}>Technology Used</Text>
            <View style={[styles.within,{marginTop:2}]}>

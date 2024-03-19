@@ -19,7 +19,7 @@ const CreateProject = () => {
   const [title, setTitle] = useState('')
   const [github, setGithub] = useState('')
   const [content, setContent] = useState('')
-  const [featuredImage, setFeaturedImage] = useState('')
+  const [featureimage, setFeatureimage] = useState('')
   const [Requirement, setRequirement] = useState('')
   const [TechnologyUsed, setTechnologyUsed] = useState('')
   
@@ -28,6 +28,8 @@ const CreateProject = () => {
       const doc=await DocumentPiker.pick()
       console.log(doc[0].uri)
      setPicdoc(doc[0].uri);
+     // change 
+     console.log(picdoc)
     }catch(error){
       if(DocumentPiker.isCancel(e))
       console.log("user cancelled the upload ",e);
@@ -190,7 +192,6 @@ const CreateProject = () => {
 
 
 
-      </ScrollView>
 
       <TouchableOpacity onPress={handlesubmit} style={{   justifyContent:'center',
     alignItems:'center',
@@ -200,9 +201,10 @@ const CreateProject = () => {
     width: '90%',
     marginTop:10,
     marginLeft:12,
-    }}>
+  }}>
         <Text style={{marginLeft:'3%',fontSize:15,fontWeight:'500',color:'black'}}>Done</Text>
         </TouchableOpacity>
+      </ScrollView>
 
     </KeyboardAvoidingView>
   )

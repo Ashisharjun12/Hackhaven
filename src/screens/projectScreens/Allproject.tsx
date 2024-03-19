@@ -6,7 +6,7 @@ import ProjectCard from './ProjectCard'
 
 const Allproject = () => {
   const [data, setData] = useState([])
-  const { database } = useContext(DatabaseContext)
+  const { database,} = useContext(DatabaseContext)
   
   useEffect(() => {
     const fetchdata = async () => {
@@ -18,8 +18,8 @@ const Allproject = () => {
       }
     }
     fetchdata();
-  }, [data]);
-
+  }, []);
+   console.log(data)
   const renderProjectCard = ({ item ,index}) => (
     <ProjectCard
     key={index}
