@@ -218,7 +218,6 @@ import DocumentPiker from 'react-native-document-picker'
 import { useContext } from 'react'
 import DatabaseContext from '../appwrite/DatabaseContext'
 import AppwriteContext from '../appwrite/AppwriteContext'
-import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { useNavigation } from '@react-navigation/native'
 import { Databases } from 'appwrite'
 
@@ -229,16 +228,13 @@ const Profile = () => {
        const {appwrite,currentuserinfo,setCurrentuserinfo}=useContext(AppwriteContext)
        const[updatpermis,setUpdatpermis]=useState(false)
        const[updatedName,setUpdatedName]=useState("");
-       const[showBottomTab,setShowBottomTab]=useState(true);
        const[imagefile,setImagefile]=useState({})
 
   const selectDoc = async () => {
       try {
         const doc = await DocumentPiker.pick();
         setPicdoc(doc[0].uri);
-        console.log(doc);
-        const file = new File([doc[0].uri], doc[0].name, { type: doc[0].type });
-        await database.uploadFile(file);
+      
       } catch (error) {
         console.error(error);
       }
