@@ -26,7 +26,6 @@ const Allproject = () => {
       title={item.title}
       technology={item.TechnologyUsed}
       requirement={item.Requirement}
-      featureimage={item.featureimage}
     />
   );
 

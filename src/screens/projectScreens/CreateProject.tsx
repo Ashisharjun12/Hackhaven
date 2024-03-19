@@ -29,7 +29,6 @@ const CreateProject = () => {
       console.log(doc[0].uri)
      setPicdoc(doc[0].uri);
      // change 
-     setFeatureimage(picdoc)
      console.log(picdoc)
     }catch(error){
       if(DocumentPiker.isCancel(e))
@@ -84,7 +83,6 @@ const CreateProject = () => {
         content,
         status,
         TechnologyUsed,
-        featureimage,
         userId,
         Requirement,
         github

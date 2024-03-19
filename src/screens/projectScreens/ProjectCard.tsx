@@ -1,15 +1,13 @@
 import {  ScrollView, StyleSheet, Text, View ,Image} from 'react-native'
 import React from 'react'
 
-const ProjectCard = ({title,technology,requirement,featureimage}) => {
+const ProjectCard = ({title,technology,requirement}) => {
     const Technologyparts = technology.split(',').map(part => part.trim());
     const Requirementparts = requirement.split(',').map(part => part.trim());
     return (
     
 <ScrollView style={{backgroundColor:'rgba(220,224,238,0.5)'}}>
   <View style={styles.container}>
-  <View>{featureimage && <Image source={{uri:featureimage}} resizeMode='cover' style={{height:114,width:'100%'}}></Image>}</View>
-
      <View style={styles.Card}>
        <View style={styles.Headerdiv}>
          <Text numberOfLines={1} ellipsizeMode="tail" style={styles.headerText}>{title}</Text>
