@@ -8,13 +8,15 @@ import BottomSheet from '../component/BottomSheet/BottomSheet'
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import Personalinfo from '../component/BottomSheetScreens/Personalinfo'
 import { useNavigation } from '@react-navigation/native'
+import { Databases } from 'appwrite'
 
 const Profile = () => {
-  const {picdoc,setPicdoc} = useContext(DatabaseContext)
+  const {picdoc,setPicdoc,database} = useContext(DatabaseContext)
    const {appwrite,currentuserinfo,setCurrentuserinfo}=useContext(AppwriteContext)
    const[updatpermis,setUpdatpermis]=useState(false)
    const[updatedName,setUpdatedName]=useState("");
    const[showBottomTab,setShowBottomTab]=useState(true);
+   const[imagefile,setImagefile]=useState({})
    
     navigation=useNavigation();
    useEffect(() => {
@@ -30,18 +32,21 @@ const Profile = () => {
            setCurrentuserinfo({ ...currentuserinfo,name:updatedName });    
         }}
 //image
-    const selectDoc = async ()=>{
-      try{
-        const doc=await DocumentPiker.pick()
-       setPicdoc(doc[0].uri);
-      }catch(error){
-        if(DocumentPiker.isCancel(e))
-        console.log("user cancelled the upload ",e);
-      else{
-        console.log(error)
-      }
-    }
-    }
+const selectDoc = async () => {
+  try {
+    const doc = await DocumentPiker.pick();
+    setPicdoc(doc[0].uri);
+    console.log(doc);
+    const file = new File([doc[0].uri], doc[0].name, { type: doc[0].type });
+    await database.uploadFile(file);
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+    
+
+
    useEffect (()=>{
    const getuserinfo= async ()=>{
      try{
