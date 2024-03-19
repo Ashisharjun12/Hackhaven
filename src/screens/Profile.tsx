@@ -4,15 +4,25 @@ import DocumentPiker from 'react-native-document-picker'
 import { useContext } from 'react'
 import DatabaseContext from '../appwrite/DatabaseContext'
 import AppwriteContext from '../appwrite/AppwriteContext'
-import BottomSheet from '../component/BottomSheet/BottomSheetProfile'
+import BottomSheet from '../component/BottomSheet/BottomSheet'
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
-
+import Personalinfo from '../component/BottomSheetScreens/Personalinfo'
+import { useNavigation } from '@react-navigation/native'
 
 const Profile = () => {
   const {picdoc,setPicdoc} = useContext(DatabaseContext)
    const {appwrite,currentuserinfo,setCurrentuserinfo}=useContext(AppwriteContext)
    const[updatpermis,setUpdatpermis]=useState(false)
    const[updatedName,setUpdatedName]=useState("");
+   const[showBottomTab,setShowBottomTab]=useState(true);
+   
+    navigation=useNavigation();
+   useEffect(() => {
+    navigation.setOptions({
+      tabBarStyle: { display: showBottomTab ? 'flex' : 'none' }
+    });
+  }, [showBottomTab]);
+ 
    function handleEditName(){
     onPress()
          setUpdatpermis(!updatpermis)
@@ -43,14 +53,16 @@ const Profile = () => {
    }
    getuserinfo()
   },[])
-
+// to open BottomSheet
   const ref = useRef(null);
   const onPress = useCallback(() => {
     const isActive = ref?.current?.isActive();
     if (isActive) {
       ref?.current?.scrollTo(0);
+      setShowBottomTab(true);
     } else {
       ref?.current?.scrollTo(-700);
+      setShowBottomTab(false);
     }
   }, []);
   return (
@@ -119,23 +131,14 @@ const Profile = () => {
 
          <View style={{height:250,width:'100%',}}>
          <View style={{height:34,width:'100%'}}><Text style={{fontSize:16}}>The Above Info Provided</Text></View>
-          <View style={{height:210,width:'100%',backgroundColor:'rgba(220,224,238,0.8)',borderRadius:24,}}>
-            <View style={{flexDirection:'row'}}>
-            <Text style={{fontSize:20,marginLeft:14}}>Your Name </Text>
-            <Text style={{color:'black',fontWeight:'bold',fontSize:20}}>{`:- ${currentuserinfo.name}`}</Text>
-            </View>
-            <View style={{flexDirection:'row', overflow:'hidden'}}>
-            <Text style={{fontSize:20,marginLeft:10}}>Email ID </Text>
-            <Text style={{color:'black',fontWeight:'bold',fontSize:20}}>{`:- ${currentuserinfo.email}`}</Text>
-            </View>
-             <Text style={{marginLeft:15,marginTop:12}}>Updata Your Skills</Text>
-
-          </View>
+         
           </View>
         </View>
       </ScrollView>
       <BottomSheet ref={ref}>
-          <View style={{ flex: 1, backgroundColor: 'rgba(220,24,238,0.2)' }} />
+          <View style={{ flex: 1, backgroundColor: '#F4F4F4' }}>
+          <Personalinfo/>
+          </View>
         </BottomSheet>
       </GestureHandlerRootView>
   )
