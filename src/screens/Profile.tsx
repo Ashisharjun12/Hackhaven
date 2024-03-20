@@ -52,7 +52,7 @@ const Profile = ({navigation}) => {
      const handlelogout=()=>{
       appwrite.logout()
       .then(()=>{
-        navigation.navigate('Signup')
+        navigation.navigate('AuthStack')
       })
      }
      ///
