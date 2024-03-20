@@ -23,6 +23,7 @@ const CreateProject = () => {
   const [Requirement, setRequirement] = useState('')
   const [TechnologyUsed, setTechnologyUsed] = useState('')
   
+  
   const selectDoc = async ()=>{
     try{
       const doc=await DocumentPiker.pick()
@@ -39,15 +40,14 @@ const CreateProject = () => {
   }
   }
 
-  useEffect(() => {
-    console.log("uni", uniqueId);
-
-  }, [uniqueId]);
+ 
 
   function generateUniqueId() {
     return Date.now().toString(36) + Math.random().toString(36);
   }
-  
+  useEffect(()=>{
+    setUniqueId(uniqueId)
+  },[uniqueId])
   useEffect(() => {
     appwrite
       .getCurrentUser()
@@ -74,7 +74,7 @@ const CreateProject = () => {
       }
       else {
       const status="active"
-      setUniqueId(generateUniqueId())
+        setUniqueId(generateUniqueId())
     console.log("bottom",uniqueId)
       setError('')
       const data = {

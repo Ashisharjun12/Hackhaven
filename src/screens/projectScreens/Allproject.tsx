@@ -19,6 +19,7 @@ const Allproject = ({navigation}) => {
     }
     fetchdata();
   }, [data]);
+  // console.log(data)
   const renderProjectCard = ({ item }) => (
     <Pressable onPress={() => navigation.navigate('Projectdetails', { 
       title: item.title, 

@@ -1,23 +1,72 @@
 
 
-import { View, Text, Image, TouchableOpacity,TextInput, StyleSheet } from 'react-native'
+import { View, Text, Image, TouchableOpacity,TextInput, StyleSheet, ScrollView } from 'react-native'
 import React, { useEffect, useState,useRef,useCallback } from 'react'
 import DocumentPiker from 'react-native-document-picker'
 import { useContext } from 'react'
 import DatabaseContext from '../appwrite/DatabaseContext'
 import AppwriteContext from '../appwrite/AppwriteContext'
-import { useNavigation } from '@react-navigation/native'
+import { Link, useNavigation } from '@react-navigation/native'
 import { Databases } from 'appwrite'
 
 const Profile = () => {
 
   
-      const {picdoc,setPicdoc,database} = useContext(DatabaseContext)
+      const {picdoc,setPicdoc,database,uniqueId,setUniqueId} = useContext(DatabaseContext)
        const {appwrite,currentuserinfo,setCurrentuserinfo}=useContext(AppwriteContext)
        const[updatpermis,setUpdatpermis]=useState(false)
-       const[updatedName,setUpdatedName]=useState("");
-       const[imagefile,setImagefile]=useState({})
+       const[updatedName,setUpdatedName]=useState({});
+       const[instagram,setInstagram]=useState("");
+       const[linkedin,setLinkedin]=useState("");
+       const[facebook,setFacebook]=useState("");
+       const[githublink,setGithublink]=useState("");
+  
+        useEffect(()=>{
+         setUniqueId(uniqueId)
+        },[uniqueId])
+       const handlesubmit = async () => {
+        // console.log("qu", uniqueId);
+        const title="nononn"
+        const links = {
+          uniqueId,
+          instagram,
+          facebook,
+          linkedin,
+          githublink,
+        };
+            await database.updatePost({links})
+            .then((resposnce)=>{
+              setInstagram('')
+              setFacebook('')
+              setGithublink('')
+              setInstagram('')
+              setLinkedin('')
 
+            })
+      };
+     
+     useEffect(()=>{
+          handlesubmit()
+     },[uniqueId])
+
+     const handlelogout=()=>{
+      appwrite.logout()
+     }
+     ///
+    useEffect(() => {
+      const fetchdata = async () => {
+        try {
+          const response = await database.getPost(uniqueId);
+          setUpdatedName(response?.documents);
+          console.log("respo",response)
+        } catch(error) {
+          console.log("fetchdata alldata", error)
+        }
+      }
+      fetchdata();
+    }, [uniqueId]);
+    console.log(updatedName)
+////
   const selectDoc = async () => {
       try {
         const doc = await DocumentPiker.pick();
@@ -43,6 +92,7 @@ const Profile = () => {
   
 
   return (
+    <ScrollView>
     
     <View style={{height:'100%',width:'100%',backgroundColor:'rgba(252, 253, 255, 0.51)'}}>
      
@@ -92,22 +142,25 @@ const Profile = () => {
 
   <View style={{flexDirection:'row',gap:7,marginTop:'6%'}}>
             <Image style={{width:40,height:40,marginRight:'3%'}} source={require('../asserts/instagram.png')}/>
-         <TextInput style={styles.input} placeholder='Facebook'  onChangeText={e=>SetName(e)}/>   
+         <TextInput style={styles.input} placeholder='Facebook'  onChangeText={e=>setFacebook(e)}/>   
               </View>
   <View style={{flexDirection:'row',gap:7,marginTop:'4%'}}>
             <Image style={{width:40,height:40,marginRight:'3%'}} source={require('../asserts/linkedin.png')}/>
-         <TextInput style={styles.input} placeholder='Linkedin'  onChangeText={e=>SetName(e)}/>   
+         <TextInput style={styles.input} placeholder='Linkedin'  onChangeText={e=>setLinkedin(e)}/>   
               </View>
   <View style={{flexDirection:'row',gap:7,marginTop:'4%'}}>
             <Image style={{width:40,height:40,marginRight:'3%'}} source={require('../asserts/github.png')}/>
-         <TextInput style={styles.input} placeholder='Github'  onChangeText={e=>SetName(e)}/>   
+         <TextInput style={styles.input} placeholder='Github'  onChangeText={e=>(e)}/>   
               </View>
 
-              <TouchableOpacity  style={styles.submit}><Text style={{fontSize:17,color:'black',fontWeight:'500'}} >Logout</Text>
+              <TouchableOpacity  style={styles.submit}><Text style={{fontSize:17,color:'black',fontWeight:'500'}} >Submit</Text>
+              </TouchableOpacity>
+              <TouchableOpacity onPress={handlelogout} style={styles.submit}><Text style={{fontSize:17,color:'black',fontWeight:'500'}} >Logout</Text>
               </TouchableOpacity>
 
   </View>
     </View>
+    </ScrollView>
   )
 }
 

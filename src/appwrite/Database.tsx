@@ -43,13 +43,13 @@ class DatabaseService{
          console.log("createpostDatabase service: ",error)
     }
 }
-    async updatePost({uniqueId,title,content,featuredImage,status,TechnologyUsed,Requirement,step,github}){
+    async updatePost({uniqueId,instagram,facebook,githublink,linkedin}){
         try{
             return await this.databases.updateDocument(APPWRITE_DATABASE_ID,APPWRITE_COLLECTION_ID,uniqueId,{
-                title,
-                content,
-                featuredImage,
-                status,
+                instagram,
+                facebook,
+                githublink,
+                linkedin
             })
             
         } catch (error){
