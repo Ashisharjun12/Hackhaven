@@ -4,6 +4,7 @@ import Home from '../screens/Home'
 import { createNativeStackNavigator } from '@react-navigation/native-stack'
 import StartMeet from '../screens/StartMeet'
 import Projectdetails from '../screens/Projectdetails'
+import Signup from '../screens/Signup'
 const Stack=createNativeStackNavigator()
 const AppStack = () => {
   return (
@@ -25,6 +26,14 @@ const AppStack = () => {
         <Stack.Screen
         name='Projectdetails'
         component={Projectdetails}
+        
+        />
+        <Stack.Screen
+        name='Signup'
+        component={Signup}
+        options={{
+          headerShown:false
+        }}
         
         />
 

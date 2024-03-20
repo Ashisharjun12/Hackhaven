@@ -64,6 +64,7 @@ const Projectdetails = ({route}) => {
            <TouchableOpacity onPress={() => Linking.openURL(productdetails.github)}><Text style={styles.social}>{productdetails.github}</Text></TouchableOpacity></View>}
             </View>
         </View>
+        
 
    
   )

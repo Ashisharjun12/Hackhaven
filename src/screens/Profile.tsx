@@ -9,7 +9,7 @@ import AppwriteContext from '../appwrite/AppwriteContext'
 import { Link, useNavigation } from '@react-navigation/native'
 import { Databases } from 'appwrite'
 
-const Profile = () => {
+const Profile = ({navigation}) => {
 
   
       const {picdoc,setPicdoc,database,uniqueId,setUniqueId} = useContext(DatabaseContext)
@@ -51,6 +51,9 @@ const Profile = () => {
 
      const handlelogout=()=>{
       appwrite.logout()
+      .then(()=>{
+        navigation.navigate('Signup')
+      })
      }
      ///
     useEffect(() => {
