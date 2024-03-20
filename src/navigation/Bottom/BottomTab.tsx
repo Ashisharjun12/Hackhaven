@@ -18,7 +18,7 @@ const BottomTab = () => {
 
   const route = useRoute();
   return (
-    <BotTab.Navigator initialRouteName='Profile'
+    <BotTab.Navigator initialRouteName='Project'
     screenOptions={{
       headerShown: false, 
       tabBarActiveTintColor:'#9195F6',
